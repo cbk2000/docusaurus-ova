@@ -29,23 +29,53 @@ yarn serve
 ![create](/img/create.png)
 
 ## How to setup the debian guest with Docusaurus
-TODO
 
-## Additional Standard Package
-1. [Node Js](https://nodejs.org/en)
-2. Node Package Manage (npm) (comes with the [Node Js](https://nodejs.org/en) Installation)
+### Node JS
+Docusaurus is built on top of React, a JavaScript framework used to build user interfaces. 
+To be able to "build" Docusaurus websites, we first need to setup NodeJS.
+Normally, this can be done thru package managers (like `apt`). However, the version of NodoJS available through `apt` is no longer maintained. Therefore, we can either install it manually through [the official website](https://nodejs.org/en/download), or we can use a script that helps us with that, such as [node version manager](https://github.com/nvm-sh/nvm#install--update-script).
 
-References for installation in debian guest can be read [here](https://github.com/nodesource/distributions#debinstall)
+Using `nvm`, all we need to do is run the two scripts given in their repository (linked above), and we'd have access to `nvm`. Then, we just need to run `nvm install --lts`. If no longer needed, we can run `nvm uninstall --lts`.
 
-In short, in order to install Node (As of this, this installation is using Node Js v19.x) in debian, you can use
-(make sure you are on root)
+Otherwise, we can download the source directly by:
 ```
 curl -fsSL https://deb.nodesource.com/setup_19.x | bash - &&\
 apt-get install -y nodejs
 ```
-3. (Optionally) yarn
-Make sure [Node Js](https://nodejs.org/en) and npm has been installed
+### Package Managers
+To manage JavaScript packages used by Docusaurus, you can use either npm (which comes bundled with Node.js) or Yarn. In this guide, we'll use Yarn. 
+
+To install Yarn, run the following script
 ```
-npm install --global yarn
-yarn --version
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &&\
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list &&\
+sudo apt-get update && sudo apt-get install yarn
 ```
+or, alternatively
+```
+npm install -g yarn
+```
+Note: the `yarn` package available from `apt` is not the package we want!
+
+### Running a local preview
+First, we'll install the packages required by docusaurus.
+```
+yarn install
+```
+To have a local preview that live-updates, run
+```
+yarn start
+```
+
+### Optimized Deployment Build
+To get an optimized deployment build, run
+```
+yarn build
+```
+To get a preview of this build, run
+```
+yarn serve
+```
+
+### Deployment
+Deployment instructions to Github Pages or other platforms can be found [here](https://docusaurus.io/docs/deployment)
