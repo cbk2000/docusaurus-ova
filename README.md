@@ -33,7 +33,7 @@ yarn serve
 ### Node JS
 Docusaurus is built on top of React, a JavaScript framework used to build user interfaces. 
 To be able to "build" Docusaurus websites, we first need to setup NodeJS.
-Normally, this can be done thru package managers (like `apt`). However, the version of NodoJS available through `apt` is no longer maintained. Therefore, we can either install it manually through [the official website](https://nodejs.org/en/download), or we can use a script that helps us with that, such as [node version manager](https://github.com/nvm-sh/nvm#install--update-script).
+Normally, this can be done thru package managers (like `apt`). However, the version of NodeJS available through `apt` is no longer maintained. Therefore, we can either install it manually through [the official website](https://nodejs.org/en/download), or we can use a script that helps us with that, such as [node version manager](https://github.com/nvm-sh/nvm#install--update-script).
 
 Using `nvm`, all we need to do is run the two scripts given in their repository (linked above), and we'd have access to `nvm`. Then, we just need to run `nvm install --lts`. If no longer needed, we can run `nvm uninstall --lts`.
 
