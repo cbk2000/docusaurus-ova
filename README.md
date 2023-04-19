@@ -22,13 +22,13 @@ cd code/os-documentation
 yarn build
 yarn serve
 ```
+
+## Other OVA notes
 | Internal port | External Port |
 |---|---|
 |22|6022|
 |3000|5001|
 |4000|5000|
-## Other OVA notes
-
 
 ## How to setup Github repository
 1. Log in to your Github account
